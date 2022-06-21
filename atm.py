@@ -1,24 +1,34 @@
-class ATM(object):
-  """
-    blueprint for ATM
-  """
+class Atm:
+    def __init__(self,cardnumber,pin):
+        self.cardnumber = cardnumber
+        self.pin = pin
 
-  def __init__(self, CashWithdrawal, BalanceEnquiry, CashRegister):
-    self.CashWithdrawal = CashWithdrawal
-    self.BalanceEnquiry = BalanceEnquiry
-    self.CashRegister = CashRegister
+    def check_balance(self):
+        print("Your balance is 50000")
 
-  def start(self):
-    print("Cash Registered")
+    def withdrawl(self,amount):
+        new_amount = 50000 - amount
+        print("you have withdrawn amount "+str(amount) +". Your remaining balance is "+ str(new_amount))
 
-  def stop(self):
-    print("Cash Withdrawed")
 
-  def enquiry(self):
-    print("Balance is 500$")
+def main():
+    Card_number = input("insert your card number:- ")
+    pin_number  = input("enter your pin number:- ")
 
-Pranav = ATM(60,1500,75)
-thing = ATM(70, 800,80)
+    new_user =  Atm(Card_number ,pin_number)
 
-print(thing.start())
-print(Pranav.enquiry())
+    print("Choose your activity ")
+    print("1.Balance Enquriy   2.withdrawl")
+    activity = int(input("enter activity number :- "))
+
+    if (activity == 1):
+        new_user.check_balance()
+    elif (activity == 2):
+        amount = int(input("enter the amount:- "))
+        new_user.withdrawl(amount)
+    else:
+        print("enter a valid number")
+
+
+if __name__ == "__main__":
+    main()
